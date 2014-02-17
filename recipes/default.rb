@@ -16,6 +16,6 @@ bash 'install_pleiades' do
 	unzip #{pleiades_zip} -d ./
 	cp -f -r features/jp.sourceforge.mergedoc.pleiades #{eclipse_dir}/features
 	cp -f -r plugins/jp.sourceforge.mergedoc.pleiades #{eclipse_dir}/plugins
-	echo -javaagent:plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar >> #{eclipse_dir}/eclipse.ini
+	echo -javaagent:#{eclipse_dir}/plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar >> #{eclipse_dir}/eclipse.ini
 	EOH
 end
