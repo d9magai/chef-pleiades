@@ -19,3 +19,13 @@ bash 'install_pleiades' do
 	echo -javaagent:#{eclipse_dir}/plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar >> #{eclipse_dir}/eclipse.ini
 	EOH
 end
+
+bash 'install dark juno' do
+	cwd pleiades_dir
+	code <<-EOH
+	wget https://github.com/downloads/Prototik/Eclipse-Juno-Dark/Eclipse-Juno-Dark.zip
+	unzip Eclipse-Juno-Dark.zip -d ./
+	cp -f -r plugins #{eclipse_dir}/
+	EOH
+end
+
