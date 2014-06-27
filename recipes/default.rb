@@ -23,7 +23,7 @@ end
 bash 'install dark juno' do
 	cwd pleiades_dir
 	code <<-EOH
-	wget https://github.com/downloads/Prototik/Eclipse-Juno-Dark/Eclipse-Juno-Dark.zip
+	wget https://s3-ap-northeast-1.amazonaws.com/gui.development.environment/Eclipse-Juno-Dark.zip
 	unzip Eclipse-Juno-Dark.zip -d ./
 	cp -f -r plugins #{eclipse_dir}/
 	EOH
