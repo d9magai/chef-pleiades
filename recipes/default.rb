@@ -9,9 +9,9 @@ directory pleiades_dir do
 	not_if { ::File.exists?(pleiades_dir) }
 end
 
-bash 'install_pleiades' do
+execute 'install_pleiades' do
 	cwd pleiades_dir
-	code <<-EOH
+	command <<-EOH
 	wget http://jaist.dl.sourceforge.jp/mergedoc/58165/pleiades_1.4.0.zip
 	unzip #{pleiades_zip} -d ./
 	cp -f -r features/jp.sourceforge.mergedoc.pleiades #{eclipse_dir}/features
@@ -20,9 +20,9 @@ bash 'install_pleiades' do
 	EOH
 end
 
-bash 'install dark juno' do
+execute 'install dark juno' do
 	cwd pleiades_dir
-	code <<-EOH
+	command <<-EOH
 	wget https://s3-ap-northeast-1.amazonaws.com/gui.development.environment/Eclipse-Juno-Dark.zip
 	unzip Eclipse-Juno-Dark.zip -d ./
 	cp -f -r plugins #{eclipse_dir}/
