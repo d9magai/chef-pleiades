@@ -3,7 +3,6 @@ include_recipe 'eclipse'
 eclipse_dir = "#{node['ark']['prefix_home']}/eclipse"
 pleiades_dir = '/tmp/pleiades'
 pleiades_zip = pleiades_dir + '/' + (File.basename node['pleiades']['url'])
-darkjuno_zip = (File.basename node['pleiades']['darkjuno'])
 
 directory pleiades_dir do
 	action :create
@@ -19,15 +18,6 @@ execute 'install_pleiades' do
 	cp -f -r plugins/jp.sourceforge.mergedoc.pleiades #{eclipse_dir}/plugins
 	EOH
 	not_if { ::File.exists?("#{pleiades_dir}/plugins/jp.sourceforge.mergedoc.pleiades")}
-end
-
-execute 'install dark juno' do
-	cwd pleiades_dir
-	command <<-EOH
-	wget #{node['pleiades']['darkjuno']}
-	unzip #{darkjuno_zip} -d ./
-	cp -f -r plugins #{eclipse_dir}/
-	EOH
 end
 
 template "#{eclipse_dir}/eclipse.ini" do
