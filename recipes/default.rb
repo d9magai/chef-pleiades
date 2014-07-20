@@ -18,6 +18,7 @@ execute 'install_pleiades' do
 	cp -f -r features/jp.sourceforge.mergedoc.pleiades #{eclipse_dir}/features
 	cp -f -r plugins/jp.sourceforge.mergedoc.pleiades #{eclipse_dir}/plugins
 	EOH
+	not_if { ::File.exists?("#{pleiades_dir}/plugins/jp.sourceforge.mergedoc.pleiades")}
 end
 
 execute 'install dark juno' do
