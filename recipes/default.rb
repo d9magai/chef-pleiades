@@ -2,8 +2,8 @@ include_recipe 'eclipse'
 
 eclipse_dir = "#{node['ark']['prefix_home']}/eclipse"
 pleiades_dir = '/tmp/pleiades'
-pleiades_zip = pleiades_dir + '/' + File.basename node['pleiades']['url']
-darkjuno_zip = File.basename node['pleiades']['darkjuno']
+pleiades_zip = pleiades_dir + '/' + (File.basename node['pleiades']['url'])
+darkjuno_zip = (File.basename node['pleiades']['darkjuno'])
 
 directory pleiades_dir do
 	action :create
